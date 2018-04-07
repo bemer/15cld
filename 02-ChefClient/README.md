@@ -118,7 +118,7 @@ A saída deste comando deverá ser semelhante a:
     [2018-04-07T14:25:45-03:00] WARN: Node chef-client has an empty run list.
     Converging 1 resources
     Recipe: @recipe_files::/home/chef-admin/motd.rb
-      \* file[/tmp/motd] action create
+      * file[/tmp/motd] action create
         - create new file /tmp/motd
         - update content in file /tmp/motd from none to 44dae5
         --- /tmp/motd	2018-04-07 14:25:45.893352458 -0300
@@ -177,10 +177,10 @@ A saída do comando deverá ser semelhante a:
     [2018-04-07T15:12:43-03:00] WARN: Node chef-client has an empty run list.
     Converging 2 resources
     Recipe: @recipe_files::/home/chef-admin/apache_server.rb
-      \* apt_package[apache2] action install
-        \- install version 2.4.18-2ubuntu3.5 of package apache2
-      \* service[apache2] action enable (up to date)
-      \* service[apache2] action start (up to date)
+      * apt_package[apache2] action install
+        - install version 2.4.18-2ubuntu3.5 of package apache2
+      * service[apache2] action enable (up to date)
+      * service[apache2] action start (up to date)
 
     Running handlers:
     Running handlers complete
