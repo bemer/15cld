@@ -4,4 +4,10 @@ Neste laboratório, vamos criar uma imagem base com um servidor apache instalado
 
 Para isto, logue-se em sua conta da AWS e em `AWS Services` digite `EC2`, Clique em `EC2`:
 
-![acessar ec2](/images/acessar_ec2.png)
+![acessar ec2](/01-BakeryImage/images/acessar_ec2.png)
+
+
+
+https://github.com/bemer/15cld/blob/master/01-BakeryImage/images/acessar_ec2.png
+https://github.com/bemer/15cld/blob/master/images/acessar_ec2.png
+https://github.com/bemer/15cld/blob/master/01-BakeryImage/README.md
