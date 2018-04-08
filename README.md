@@ -1,6 +1,6 @@
-# Orquestração e Automação de Serviços - 15CLD
-
 ![fiap logo](/images/fiap_logo.jpg)
+
+# Orquestração e Automação de Serviços - 15CLD
 
 Bem vindo ao material de laboratório elaborado para o curso de **Orquestração e Automação de Serviços** da turma **15CLD**!
 
