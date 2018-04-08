@@ -14,7 +14,7 @@ Estes containers serão executados dentro de nosso `Chef Client`, e a partir do 
 
 Este desenho demonstra a arquitetura utilizada neste laboratório:
 
-![lab architecture](/04-BootstrapUsandoKnife/images/lab_architecture)
+![lab architecture](/04-BootstrapUsandoKnife/images/lab_architecture.png)
 
 ## 1. Criando a imagem Docker
 
