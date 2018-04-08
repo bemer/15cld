@@ -101,7 +101,7 @@ Ao executarmos este comando, o knife irá realizar uma conexão via ssh ao nosso
 
 Para validar o funcionamento do comando, acesse seu Chef Server através da interface web, navegue até `Nodes`, e você deverá ver seu container listado como um servidor chamado `motd-server`:
 
-![motd server](/04-BootstrapUsandoKnife/images/motd_server.png)
+![motd server](/04-BootstrapUsandoKnife/images/motd-server.png)
 
 Você também poderá validar através do terminal do `Chef Server`, executando o seguinte comando:
 

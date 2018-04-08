@@ -1,6 +1,8 @@
 # Instalação do Chef Client
 
-## 01. Obtendo o endereço IP do servidor
+O Chef Client é um agente que deve ser executado localmente em todos os servidores de sua infra-estrutura que serão gerenciados pelo Chef. Quando o processo de `chef-client` é executado, a função principal do mesmo é se comunicar com o Chef Server afim de realizar o download e execução das receitas Chef.
+
+## 1. Obtendo o endereço IP do servidor
 
 Neste laboratório, vamos instalar o chef-client em uma máquina virtual e vamos utilizar o mesmo para executar algumas receitas que vão criar arquivos e instalar pacotes em nosso servidor.
 
@@ -44,7 +46,7 @@ A saída deste comando deverá ser semelhante a:
 Note que esta máquina virtual possui 3 interfaces de rede: uma dedicada ao Docker, que já está instalado, uma interface de loopback e uma interface denominada `enmp0s3`. Esta é a interface que iremos utilizar. Note que o endereço IP desta interface é apresentado na seção `inet addr`. No exemplo acima, o endereço a ser utilizado é `192.168.0.14`. Anote este endereço, pois precisaremos dele no próximo passo.
 
 
-## 02. Configurando o Putty
+## 2. Configurando o Putty
 
 Agora que já sabemos o endereço IP de nosso servidor, vamos configurar o Putty para realizar acesso remoto ao mesmo. Abra o Putty em seu computador e no campo `Host Name (or IP Address)` insira o endereço IP do servidor após `chef-admin@`. No campo `Saved Sessions` insira o nome `chef-client` e em seguida clique em `Save` no lado direito. Isto irá permitir um acesso mais facilitado ao servidor durante os próximos laboratórios:
 
@@ -56,7 +58,7 @@ Feito isto, clique em `Open` na parte inferior da tela. O Putty irá então abri
 
 A partir daqui, todos os comandos deverão ser executados diretamente na janela do Putty.
 
-## 03. Instalando o chef-client
+## 3. Instalando o chef-client
 
 O próximo passo em nosso laboratório, é realizar a instalação do `chef-client`. O processo para instalação do chef-client é extremamente simples, sendo basicamente realizado pelos comandos:
 
@@ -74,7 +76,7 @@ A saída do comando deverá ser semelhante a:
 
     Chef: 14.0.190
 
-## 04. Criando uma receita
+## 4. Criando uma receita
 
 Agora que temos o chef-client instalado, vamos criar uma receita simples, para ser executada pelo mesmo. Esta receita irá basicamente criar um arquivo chamado `motd` dentro do diretório `/tmp` de nosso servidor.
 
@@ -100,7 +102,7 @@ Note que agora estamos interagindo com um script escrito em `Ruby`. O Ruby é um
 
 > Você pode aprender mais sobre o Ruby [neste link](https://www.ruby-lang.org/pt/).
 
-## 05. Executando a receita
+## 5. Executando a receita
 
 Agora que já instalamos o chef-client e criamos nossa primeira receita, chegou a hora de executá-la. Para isto, devemos utilizar o seguinte comando:
 
@@ -138,7 +140,7 @@ A saída deverá ser:
 
     Olá mundo
 
-## 05. Instalando um programa com o Chef
+## 6. Instalando um programa com o Chef
 
 Agora que já temos uma receita responsável por criar um arquivo e editar seu conteúdo, vamos passar para uma atividade um pouco mais complexa: instalar o Apache Server em nosso host.
 

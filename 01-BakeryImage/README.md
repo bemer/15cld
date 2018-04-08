@@ -1,5 +1,9 @@
 # Criando uma Bakery Image
 
+A técnica de Bakery Image consiste em criar uma imagem de uma máquina virtual que já possua todos os pacotes necessários instalados, afim de facilitar o processo de deploy de novos servidores, economizando tempo com a instalação do mesmo. Quando trabalhamos com Bakery Images, a idéia é investir tempo afim de automatizar apenas o processo de configuração do servidor, sem levar em conta o processo de download de novas ferramentas.
+
+Neste tutorial, vamos criar uma Bakery Image na nuvem, utilizando a nuvem da AWS.
+
 ## 1. Instalando o Apache via User data
 
 Neste laboratório, vamos criar uma imagem base com um servidor apache instalado, sem que haja a necessidade de realizarmos acesso remoto ao servidor.
