@@ -18,10 +18,15 @@ Aqui você vai encontrar todo o conteúdo e passos para a execução dos laborat
 
 Você deverá executar o laboratório na seguinte ordem:
 
-- [Criando Chef Cookbooks](#criando-chef-cookbooks)
-  * [1. Criando um cookbook](#1-criando-um-cookbook)
-  * [2. Editando a receita default](#2-editando-a-receita-default)
-  * [3. Enviando o cookbook para o Chef Server](#3-enviando-o-cookbook-para-o-chef-server)
-  * [4. Alterando o Run List do Node](#4-alterando-o-run-list-do-node)
-  * [5. Executando nossa receita](#5-executando-nossa-receita)
-  * [6. Verificando os relatórios](#6-verificando-os-relat-rios)
+
+== Build and Test Services using Maven
+
+. Each microservice is in a different repo:
++
+[cols="1,3"]
+|====
+| `greeting` | https://github.com/arun-gupta/microservices-greeting
+| `name` | https://github.com/arun-gupta/microservices-name
+| `webapp` | https://github.com/arun-gupta/microservices-webapp
+|====
++
