@@ -40,10 +40,71 @@ E utilizando um editor de texto de sua preferência, insira o seguinte conteúdo
 
     ENV NOTVISIBLE "in users profile"
     RUN echo "export VISIBLE=now" >> /etc/profile
-    
+
     EXPOSE 22
     CMD ["/usr/sbin/sshd", "-D"]
 
 Note que este este Dockerfile está utilizando a imagem base `ubuntu:16.04` e realizando a instalação e configuração de um `ssh server`.
 
-Após criar este arquivo, execute o comando:
+Após criar o Dockerfile, execute o comando a seguir para gerar sua imagem:
+
+    $ sudo docker build -t ssh-server_image .
+
+Após gerar sua imagem, você poderá verificar se a mesma está devidamente criada e disponível em seu `Chef Client` através do seguinte comando:
+
+    $ sudo docker images
+
+No output deste comando, você poderá visualizar as duas imagens disponíves: a imagem `ubuntu` utilizada como base image para a geração de nossa imagem com o ssh e a própria imagem `ssh-server_image`:
+
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    ssh-server_image    latest              07e7baf0bbb1        55 seconds ago      207MB
+    ubuntu              16.04               f975c5035748        4 weeks ago         112MB
+
+## 2. Executando um container
+
+Agora que já temos nossa imagem criada, podemos executar a mesma através do seguinte comando:
+
+    $ sudo docker run -d -P --name motd-server ssh-server_image
+
+Note que estamos criando um container chamado `motd-server` a partir da imagem `ssh-server_image`. Adicionalmente estamos utilizando a opção `-d` para executar o container em `daemon mode`, ou seja, em background, e a opção `-P` para realizar o mapeamento de uma porta aleatória para acesso ao SSH.
+
+Verifique a execução de seu container através do comando:
+
+    $ sudo docker ps
+
+O output deverá ser semalhante a:
+
+    CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS                   NAMES
+    a32d2fdfc79e        ssh-server_image    "/usr/sbin/sshd -D"   5 seconds ago       Up 4 seconds        0.0.0.0:32768->22/tcp   motd-server
+
+Como informado, a opção `-P` irá mapear uma porta aleatória para o container, desta forma, precisamos descobrir qual é a porta utilizada por este container para realizarmos o processo de bootstrap. Vamos utilizar o seguinte comando para obter os dados da porta utilizada:
+
+    $ sudo docker port motd-server 22
+
+A saída deste comando deverá ser semelhante a:
+
+    0.0.0.0:32768
+
+Anote esta porta, por vamos precisar da mesma no próximo passo.
+
+## 3. Bootstrap com o Knife
+
+Neste momento, já temos um container em execução, simulando um servidor chamado `motd-server`. Vamos então realizar o bootstrap, ou seja, o processo de instalação do `chef-client` e configuração para que ocorra a comunicação com o `chef-server`.
+
+Para isto, acesse o `Chef Server`, em seguida navegue até o diretório `chef-repo/` e execute o seguinte comando:
+
+    $ knife bootstrap <IP do Chef Client>:<Porta utilizada pelo container> -x root -P 123456 -N motd-server
+
+>O endereço IP do servidor Chef Client é o mesmo utilizado para realizarmos acesso remoto via ssh, enquanto a porta utilizada pelo container é a mesma exposta no passo 2 deste tutorial. Lembre-se de remover os sinais `<>` do comando.
+
+Ao executarmos este comando, o knife irá realizar uma conexão via ssh ao nosso container, instalar os pacotes necessários e configurar o mesmo para que ocorra a conexão com o Chef Server.
+
+Para validar o funcionamento do comando, acesse seu Chef Server através da interface web, navegue até `Nodes`, e você deverá ver seu container listado como um servidor chamado `motd-server`:
+
+![motd server](/04-BootstrapUsandoKnife/images/motd_server.png)
+
+Você também poderá validar através do terminal do `Chef Server`, executando o seguinte comando:
+
+    $ knife client list
+
+O servidor chamado `motd-server` deverá ser listado.
