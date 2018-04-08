@@ -88,3 +88,94 @@ Em seguida preencha o `Full Name` e o `Short Name` desta organização como `mba
 Você será redirecionado para a tela principal do Chef Server:
 
 ![chef main screen](/03-InstalacaoChefServer/images/chef_main_screen.png)
+
+## 4. Instalação do Chef DK e configuração do Workstation
+
+O Chef DK (Chef Development Kit) é um pacote que contem basicamente tudo o que precisamos para trabalhar com o Chef. Ele irá instalar o chef-client, knife, ferramentas de teste, entre outros.
+
+Em nosso laboratório, vamos instalar o Chef DK no mesmo servidor em que instalamos o Chef Server. O primeiro passo é realizarmos o download do pacote do Chef DK. Para isto vamos utilizar o comando:
+
+    $ wget https://packages.chef.io/files/stable/chefdk/2.4.17/ubuntu/16.04/chefdk_2.4.17-1_amd64.deb
+
+Em seguida, vamos realizar o processo de instalação:
+
+    $ sudo dpkg –i chefdk_2.4.17-1_amd64.deb
+
+Feito isto, vamos realizar a configuração do Workstation. O workstation é basicamente uma máquina que contém todos os pacotes necessários para interagirmos com o Chef e realizar a criação de cookbooks, receitas, testar e validar o funcionamento do Chef e interagir com o Chef Server.
+
+O primeiro passo para a configuração de nosso Workstation é a instalação do Ruby, linguagem de programação utilizada pelo Chef. Execute os seguintes comandos:
+
+    $ sudo apt-get update
+    $ sudo apt-get install -y ruby
+
+Após a instalação do Ruby, vamos realizar o download do Starter Kit diretamente da interface web do Chef Server. O Starter Kit é basicamente um pacote com todos os certificados e arquivos de configuração necessários para que seu workstation possa interagir com o Chef Server.
+
+>Os arquivos de configuração necessários para que o workstation interaja com o Chef Server podem ser gerados manualmente, porém utilizando a interface web, o processo fica bem mais fácil, poupando bastante tempo. Caso você queira mais informações sobre o processo de geração do Starter Kit, acesse [este link](https://docs.chef.io/workstation.html).
+
+Ao acessar o Chef Server através da interface web, navegue até `Aministration`, selecione a organização `mba-fiap` criada anteriormente, e no menu lateral esquerdo, clique em `Starter Kit`. Você irá se deparar com a seguinte tela:
+
+![download starter kit](/03-InstalacaoChefServer/images/download_starter_kit.png)
+
+Nesta tela, clique em `Download Starter Kit`, e em seguida clique em `Proceed`.
+
+O arquivo será salvo em seu computador. O próximo passo é mover o mesmo para a máquina virtual. Este é um processo que pode ser realizado através de recursos do próprio Hypervisor, porém para simular um ambiente de produção, vamos utilizar um aplicativo chamado `Filezilla`, que é basicamente um client SFTP.
+
+Instale o `Filezilla` em seu computador a partir deste link:
+
+    https://filezilla-project.org/
+
+Ao terminar o processo de instalação, abra o aplicativo e conecte-se ao servidor preenchendo os seguintes dados na parte superior da tela:
+
+    Host: Endereço IP do Chef server
+    Username: chef-admin
+    Password: chefserver
+    Port: 22
+
+E em seguida clique em `Quickconnect`. Será apresentada uma tela para que você aceite o certificado do servidor. Aceite o mesmo e você estará conectado ao servidor através de um client SFTP.
+
+Agora, vamos transferir o arquivo `chef-starter` para dentro de nosso servidor. Através da interface do Filezilla, navegue ao diretório em que você realizou o download do Starter Kit. Dê um duplo clique no arquivo, e ele será transferido para dentro do Servidor:
+
+![filezilla screen](/03-InstalacaoChefServer/images/filezilla_screen.png)
+
+Volte ao terminal de seu `Chef Server` e verifique que o comando `chef-starter.zip` está presente em seu diretório através do comando:
+
+    $ ls chef-starter.zip
+
+Vamos agora extrair o Starter Kit utilizando o seguinte comando:
+
+    $ unzip chef-starter.zip
+
+Uma pasta chamada `chef-repo` será criada. Acesse esta pasta utilizando o comando:
+
+    $ cd chef-repo/
+
+Agora, vamos realizar o download dos certificados do servidor. Para isto, utilizaremos o utilitário do Chef chamado `Knife.`
+O Knife é uma ferramenta de linha de comando que provê uma interface entre um repositório local e o Chef Server. Utilizaremos o Knife para algumas tarefas como por exemplo o bootstrap de novos hosts, o upload de novas receitas para o Chef Server, entre outros.
+
+Para realizar o download dos certificados do servidor, execute o seguinte comando:
+
+    $ knife ssl fetch
+
+A saída de seu comando deverá ser semelhante a:
+
+    WARNING: Certificates from 192.168.0.13 will be fetched and placed in your trusted_cert
+    directory (/home/chef-admin/chef-repo/.chef/trusted_certs).
+
+    Knife has no means to verify these are the correct certificates. You should
+    verify the authenticity of these certificates after downloading.
+
+    Adding certificate for 192_168_0_13 in /home/chef-admin/chef-repo/.chef/trusted_certs/192_168_0_13.crt
+
+## 5. Validando a instalação do Chef Server
+
+Neste ponto, já temos o Chef Server devidamente instalado, realizamos a configuração de nossa Workstation, instalamos todas as ferramentas necessárias para a administração dos Cookbooks e baixamos os certificados apresentados pelo nosso servidor.
+
+Vamos agora executar um comando através do Knife afim de interagir com o Chef Server. Este é um comando simples, que irá apenas listas os nodes registrados em nosso servidor. Execute o comando:
+
+    $ knife client list
+
+A sua saída deverá ser:
+
+    mba-fiap-validator
+
+Com isto, finalizamos o processo de instalação e configuração do Chef Server, e já podemos iniciar o bootstrap dos servidores em nossa rede.
