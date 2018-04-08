@@ -19,14 +19,11 @@ Aqui você vai encontrar todo o conteúdo e passos para a execução dos laborat
 Você deverá executar o laboratório na seguinte ordem:
 
 
-== Build and Test Services using Maven
+= Deploying Microservices on AWS Cloud
+:toc:
 
-. Each microservice is in a different repo:
-+
-[cols="1,3"]
-|====
-| `greeting` | https://github.com/arun-gupta/microservices-greeting
-| `name` | https://github.com/arun-gupta/microservices-name
-| `webapp` | https://github.com/arun-gupta/microservices-webapp
-|====
-+
+This repo contains a simple application that consists of three microservices. The sample application uses three services:
+
+. `webapp`: Web application microservice calls `greeting` and `name` microservice to generate a greeting for a person.
+. `greeting`: A microservice that returns a greeting.
+. `name`: A microservice that returns a person’s name based upon `{id}` in the URL.
