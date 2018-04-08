@@ -86,4 +86,4 @@ Como estamos realizando a instalação de um servidor web, nada melhor do que ut
 
 Você deverá visualizar a interface do Apache Server:
 
-![apache server](06-InstalandoApache/images/apache_server.png)
+![apache server](/06-InstalandoApache/images/apache_server.png)
