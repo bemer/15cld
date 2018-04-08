@@ -19,11 +19,14 @@ Aqui você vai encontrar todo o conteúdo e passos para a execução dos laborat
 Você deverá executar o laboratório na seguinte ordem:
 
 
-= Deploying Microservices on AWS Cloud
-:toc:
+* [1. Criando uma Bakery Image ](/01-BakeryImage/)
 
-This repo contains a simple application that consists of three microservices. The sample application uses three services:
+* [2. Instalação do Chef Client](/02-ChefClient/)
 
-. `webapp`: Web application microservice calls `greeting` and `name` microservice to generate a greeting for a person.
-. `greeting`: A microservice that returns a greeting.
-. `name`: A microservice that returns a person’s name based upon `{id}` in the URL.
+* [3. Instalação do Chef Server](/03-InstalacaoChefServer/)
+
+* [4. Bootstrap de Nodes utilizando o Knife](/04-BootstrapUsandoKnife/)
+
+* [5. Criando Chef Cookbooks](/05-CriandoCookbooks/)
+
+* [6. Instalando o Apache através do Chef Server](/06-InstalandoApache/)
