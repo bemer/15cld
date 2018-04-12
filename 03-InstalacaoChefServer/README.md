@@ -6,12 +6,14 @@ Neste tutorial, vamos realizar o processo de instalação do Chef Server em noss
 
 ## 1. Instalando o Chef Server
 
-Para realizarmos a instalação do Chef Server, vamos utilizar a máquina virtual com o nome `chef-server`. Inicie a máquina virtual em seu computador e siga os passos descritos no tutorial anterior, nos capítulos [1. Obtendo o endereço IP do servidor](/02-ChefClient#01-obtendo-o-endereço-ip-do-servidor) e [2. Configurando o Putty](/02-ChefClient#02-configurando-o-putty) para realizar acesso ao novo servidor utilizando os seguinte dados:
+Para realizarmos a instalação do Chef Server, vamos utilizar a máquina virtual com o nome `chef-server`. Inicie a máquina virtual em seu computador e siga os passos descritos no tutorial anterior, nos capítulos [1. Configurando o Port Forwarding](/02-ChefClient#1-configurando-o-port-forwarding) e [2. Configurando o Putty](/02-ChefClient#02-configurando-o-putty) para realizar acesso ao novo servidor utilizando os seguinte dados:
 
     Usuário: chef-admin
     Senha: chefserver
+    
+>Como a porta 22 já está sendo utilizada pelo chef-client, vamos desta vez utilizar a porta 23 para acesso via SSH, e criar também redirecionamentos para as portas 80 e 443, para acesso à  interface web do Chef Server.
 
->Ao salvar a conexão no Putty, utilize desta vez o nome `chef-server`.
+Ao salvar a conexão no Putty, utilize desta vez o nome `chef-server`.
 
 Agora que estamos conectados ao servidor através do Putty, vamos iniciar o processo de instalação do `Chef Server`. Para isto, vamos primeiro realizar o download da última versão do Chef Server. O link para download da versão mais recente do Chef Server para instalação no Ubuntu poderá ser encontrado [nesta url](https://downloads.chef.io/chef-server#ubuntu).
 
