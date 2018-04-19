@@ -107,3 +107,5 @@ Valide o funcionamento através do comando:
 Em nossa ultima aula, utilizamos o knife para realizar o bootstrap de um container, simulando o servidor `motd-server`. Como tratava-se de um container, o mesmo não existe mais quando reiniciamos o servidor, e o processo de bootstrap deverá ser realizado novamente. Neste caso, acesse a interface web do `chef-server` e remova o node criado anteriormente selecionando o mesmo e clicando em `Delete` no menu lateral esquerdo:
 
 ![delete node](/02-ConfiguracaoRedeVirtualBox/images/delete_node.png)
+
+Feito isto, inicie um novo container e siga os passos para realizar o bootstrap novamente de acordo com o tutorial [05-BootstrapUsandoKnife](/05-BootstrapUsandoKnife/).

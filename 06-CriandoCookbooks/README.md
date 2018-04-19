@@ -42,7 +42,7 @@ Como vimos anteriormente, todas as receitas são disponibilizadas em nossos node
 
 Após realizar o upload de seu cookbook, você poderá verificar o conteúdo do mesmo através da interface web, clicando em `Policy` na parte superior da tela, selecionando seu cookbook chamado `motd` e em seguida, na parte inferior da tela, selecionando `Content`, `Recipes` e em seguida `default.rb`, conforme a imagem abaixo:
 
-![cookbook list](/05-CriandoCookbooks/images/cookbook_list.png)
+![cookbook list](/06-CriandoCookbooks/images/cookbook_list.png)
 
 
 Você também conseguirá listar os cookbooks presentes no servidor através do seguinte comando, executado no diretório `chef-repo` dentro do `Chef Server`:
@@ -55,11 +55,11 @@ Como nosso cookbook já está presente em nosso servidor, o próximo passo é ed
 
 Para isto, na interface web do servidor, vamos clicar em `Nodes` na parte superior da tela, selecionar o nosso node chamado `motd_server` e clicar no campo `Edit Run List` em actions:
 
-![node_run_list_1](/05-CriandoCookbooks/images/node_run_list_1.png)
+![node_run_list_1](/06-CriandoCookbooks/images/node_run_list_1.png)
 
 Em seguida, devemos arrastar a receita `motd` presente em `Available Recipes` para o campo `Current Run List`:
 
-![node_run_list_2](/05-CriandoCookbooks/images/node_run_list_2.png)
+![node_run_list_2](/06-CriandoCookbooks/images/node_run_list_2.png)
 
 Em seguida, vamos clicar em `Save Run List`.
 
@@ -130,4 +130,4 @@ Após executar estes comandos e validar o funcinamento de sua receita, utilize o
 
 Outra forma de verificar o status de nossa execução é utilizando a ferramenta de `Reporting` do Chef Server. Na interface web do Chef Server, clique em `Reports` na parte superior da tela, e verifique o status de suas execuções:
 
-![reporting](/05-CriandoCookbooks/images/reporting.png)
+![reporting](/06-CriandoCookbooks/images/reporting.png)

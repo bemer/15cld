@@ -24,7 +24,7 @@ Vamos agora listar as portas utilizadas em nosso novo container utilizando o com
 
 Novamente, anote a porta apresentada para que possamos utilizar no processo de bootstrap.
 
-Após a criação de uma nova imagem e a execução do container, realize o bootstrap deste novo node através do knife, em seu Chef Server. Execute os mesmos passos descritos no tutorial [04-BootstrapUsandoKnife](/04-BootstrapUsandoKnife/), porém desta vez utilizando o nome `apache-server`, com o seguinte comando:
+Após a criação de uma nova imagem e a execução do container, realize o bootstrap deste novo node através do knife, em seu Chef Server. Execute os mesmos passos descritos no tutorial [05-BootstrapUsandoKnife](/05-BootstrapUsandoKnife/), porém desta vez utilizando o nome `apache-server`, com o seguinte comando:
 
     $ knife bootstrap <IP do Chef Client>:<Porta utilizada pelo container> -x root -P 123456 -N apache-server
 
@@ -56,7 +56,7 @@ Envie seu novo cookbook para o servidor através do comando:
 
 Siga o mesmo procedimento descrito no tutorial [05-CriandoCookbooks](/05-CriandoCookbooks/), porém desta vez para o novo node utilizando a receita `apache`:
 
-![apache_run_list](06-InstalandoApache/images/apache_run_list.png)
+![apache_run_list](/07-InstalandoApache/images/apache_run_list.png)
 
 ## 4. Executando a o Run List no novo node
 
@@ -86,4 +86,4 @@ Como estamos realizando a instalação de um servidor web, nada melhor do que ut
 
 Você deverá visualizar a interface do Apache Server:
 
-![apache server](/06-InstalandoApache/images/apache_server.png)
+![apache server](/07-InstalandoApache/images/apache_server.png)

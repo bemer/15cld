@@ -14,7 +14,7 @@ Estes containers serão executados dentro de nosso `Chef Client`, e a partir do 
 
 Este desenho demonstra a arquitetura utilizada neste laboratório:
 
-![lab architecture](/04-BootstrapUsandoKnife/images/lab_architecture.png)
+![lab architecture](/05-BootstrapUsandoKnife/images/lab_architecture.png)
 
 ## 1. Criando a imagem Docker
 
@@ -101,7 +101,7 @@ Ao executarmos este comando, o knife irá realizar uma conexão via ssh ao nosso
 
 Para validar o funcionamento do comando, acesse seu Chef Server através da interface web, navegue até `Nodes`, e você deverá ver seu container listado como um servidor chamado `motd-server`:
 
-![motd server](/04-BootstrapUsandoKnife/images/motd-server.png)
+![motd server](/05-BootstrapUsandoKnife/images/motd-server.png)
 
 Você também poderá validar através do terminal do `Chef Server`, executando o seguinte comando:
 
