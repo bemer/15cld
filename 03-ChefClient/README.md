@@ -6,24 +6,24 @@ O Chef Client é um agente que deve ser executado localmente em todos os servido
 
 Neste laboratório, vamos instalar o chef-client em uma máquina virtual e vamos utilizar o mesmo para executar algumas receitas que vão criar arquivos e instalar pacotes em nosso servidor.
 
-Para instalar o chef-client, inicie a máquina virtual com o nome `chef-client`. 
+Para instalar o chef-client, inicie a máquina virtual com o nome `chef-client`.
 
-O próximo passo é realizar as configurções de `port forwarding` no VirtualBox para que possamoe realizar cesso remoto através do. `putty`. 
+O próximo passo é realizar as configurções de `port forwarding` no VirtualBox para que possamoe realizar cesso remoto através do. `putty`.
 
 > Você pode realizar acesso diretamente através da interface do VirtualBox, no entanto o uso do Putty é recomendado afim de facilitar o processo de execução dos comandos disponíveis neste tutorial.
 
 Na tela do Virtual Box, selecione a VM `chef-client` e em seguida clique em `Configurações`, na parte superior da tela:
 
-![vm configurations](/02-ChefClient/images/vm_configurations.png)
+![vm configurations](/03-ChefClient/images/vm_configurations.png)
 
 Na próxima tela, clique em `Rede`e em seguida em `Redirecionamento de Portas`:
 
-![port redirect](/02-ChefClient/images/port_redirect.png)
+![port redirect](/03-ChefClient/images/port_redirect.png)
 
 Agora, insira a porta 22 no campo `Porta do Hospedeiro` e também em `Porta do Convidado`. Clique em `OK` e em seguida em `OK` novamente:
 
 
-![ports configuration](/02-ChefClient/images/ports_configuration.png)
+![ports configuration](/03-ChefClient/images/ports_configuration.png)
 
 
 
@@ -31,7 +31,7 @@ Agora, insira a porta 22 no campo `Porta do Hospedeiro` e também em `Porta do C
 
 Agora que já sabemos o endereço IP de nosso servidor, vamos configurar o Putty para realizar acesso remoto ao mesmo. Abra o Putty em seu computador e no campo `Host Name (or IP Address)` insira `chef-admin@localhost`. No campo `Saved Sessions` insira o nome `chef-client` e em seguida clique em `Save` no lado direito. Isto irá permitir um acesso mais facilitado ao servidor durante os próximos laboratórios:
 
-![putty screen](/02-ChefClient/images/putty_screen.png)
+![putty screen](/03-ChefClient/images/putty_screen.png)
 
 Feito isto, clique em `Open` na parte inferior da tela. O Putty irá então abrir uma nova conexão ao seu servidor chamado `chef-client` e irá solicitar uma senha. Insira a senha `chefclient` e pressione enter. Você estará conectado ao seu servidor.
 
@@ -177,4 +177,4 @@ Para sairmos da tela de status deste serviço, basta pressionarmos a tecla `q` e
 
 Agora, vamos verificar se o servidor está realmente disponível e funcionando devidamente. Para isto, vamos abrir uma nova aba em nosso browser e navegar até o endereço IP de nosso servidor. A página do Apache Server deverá ser exibida:
 
-![apache server](/02-ChefClient/images/apache_server.png)
+![apache server](/03-ChefClient/images/apache_server.png)
