@@ -2,44 +2,10 @@
 
 O Chef Client é um agente que deve ser executado localmente em todos os servidores de sua infra-estrutura que serão gerenciados pelo Chef. Quando o processo de `chef-client` é executado, a função principal do mesmo é se comunicar com o Chef Server afim de realizar o download e execução das receitas Chef.
 
-## 1. Configurando o Port Forwarding
 
-Neste laboratório, vamos instalar o chef-client em uma máquina virtual e vamos utilizar o mesmo para executar algumas receitas que vão criar arquivos e instalar pacotes em nosso servidor.
+## 1. Instalando o chef-client
 
-Para instalar o chef-client, inicie a máquina virtual com o nome `chef-client`.
-
-O próximo passo é realizar as configurções de `port forwarding` no VirtualBox para que possamoe realizar cesso remoto através do. `putty`.
-
-> Você pode realizar acesso diretamente através da interface do VirtualBox, no entanto o uso do Putty é recomendado afim de facilitar o processo de execução dos comandos disponíveis neste tutorial.
-
-Na tela do Virtual Box, selecione a VM `chef-client` e em seguida clique em `Configurações`, na parte superior da tela:
-
-![vm configurations](/03-ChefClient/images/vm_configurations.png)
-
-Na próxima tela, clique em `Rede`e em seguida em `Redirecionamento de Portas`:
-
-![port redirect](/03-ChefClient/images/port_redirect.png)
-
-Agora, insira a porta 22 no campo `Porta do Hospedeiro` e também em `Porta do Convidado`. Clique em `OK` e em seguida em `OK` novamente:
-
-
-![ports configuration](/03-ChefClient/images/ports_configuration.png)
-
-
-
-## 2. Configurando o Putty
-
-Agora que já sabemos o endereço IP de nosso servidor, vamos configurar o Putty para realizar acesso remoto ao mesmo. Abra o Putty em seu computador e no campo `Host Name (or IP Address)` insira `chef-admin@localhost`. No campo `Saved Sessions` insira o nome `chef-client` e em seguida clique em `Save` no lado direito. Isto irá permitir um acesso mais facilitado ao servidor durante os próximos laboratórios:
-
-![putty screen](/03-ChefClient/images/putty_screen.png)
-
-Feito isto, clique em `Open` na parte inferior da tela. O Putty irá então abrir uma nova conexão ao seu servidor chamado `chef-client` e irá solicitar uma senha. Insira a senha `chefclient` e pressione enter. Você estará conectado ao seu servidor.
-
-A partir daqui, todos os comandos deverão ser executados diretamente na janela do Putty.
-
-## 3. Instalando o chef-client
-
-O próximo passo em nosso laboratório, é realizar a instalação do `chef-client`. O processo para instalação do chef-client é extremamente simples, sendo basicamente realizado pelos comandos:
+Após realizar a configuração de port forwarding e acessar o `chef-client` utilizando o putty, o próximo passo em nosso laboratório é realizar a instalação do `chef-client`. O processo para instalação do chef-client é extremamente simples, sendo basicamente realizado pelos comandos:
 
     $ wget https://omnitruck.chef.io/install.sh
     $ chmod 700 ./install.sh
@@ -55,7 +21,7 @@ A saída do comando deverá ser semelhante a:
 
     Chef: 14.0.190
 
-## 4. Criando uma receita
+## 2. Criando uma receita
 
 Agora que temos o chef-client instalado, vamos criar uma receita simples, para ser executada pelo mesmo. Esta receita irá basicamente criar um arquivo chamado `motd` dentro do diretório `/tmp` de nosso servidor.
 
@@ -81,7 +47,7 @@ Note que agora estamos interagindo com um script escrito em `Ruby`. O Ruby é um
 
 > Você pode aprender mais sobre o Ruby [neste link](https://www.ruby-lang.org/pt/).
 
-## 5. Executando a receita
+## 3. Executando a receita
 
 Agora que já instalamos o chef-client e criamos nossa primeira receita, chegou a hora de executá-la. Para isto, devemos utilizar o seguinte comando:
 
@@ -119,7 +85,7 @@ A saída deverá ser:
 
     Olá mundo
 
-## 6. Instalando um programa com o Chef
+## 4. Instalando um programa com o Chef
 
 Agora que já temos uma receita responsável por criar um arquivo e editar seu conteúdo, vamos passar para uma atividade um pouco mais complexa: instalar o Apache Server em nosso host.
 

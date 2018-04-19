@@ -95,7 +95,7 @@ Para isto, acesse o `Chef Server`, em seguida navegue até o diretório `chef-re
 
     $ knife bootstrap <IP do Chef Client>:<Porta utilizada pelo container> -x root -P 123456 -N motd-server
 
->O endereço IP do servidor Chef Client é o mesmo utilizado para realizarmos acesso remoto via ssh, enquanto a porta utilizada pelo container é a mesma exposta no passo 2 deste tutorial. Lembre-se de remover os sinais `<>` do comando.
+>O endereço IP do servidor Chef Client é o endereço provido pelo DHCP do VirtualBox - mesmo que utilizamos para realizar as configurações de encaminhamento de porta - enquanto a porta utilizada pelo container é a mesma exposta no passo 2 deste tutorial. Lembre-se de remover os sinais `<>` do comando.
 
 Ao executarmos este comando, o knife irá realizar uma conexão via ssh ao nosso container, instalar os pacotes necessários e configurar o mesmo para que ocorra a conexão com o Chef Server.
 
