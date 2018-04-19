@@ -6,21 +6,21 @@ Para que possamos executar os laboratórios no laboratório da FIAP, é importan
 
 Na interface do VirtualBox, clique em `Arquivo` e em seguida em `Preferências`. Feito isto, clique na opção `Rede` no menu lateral esquerdo:
 
-![network settings](/images/network_settings.png)
+![network settings](/02-ConfiguracaoRedeVirtualBox/images/network_settings.png)
 
 Feito isto, clique no botão com o sinal de `+` no canto direito desta tela, para criarmos uma nova rede NAT. Em seguida, clique em OK:
 
-![new nat network](/images/new_nat_network.png)
+![new nat network](/02-ConfiguracaoRedeVirtualBox/images/new_nat_network.png)
 
 ## 2. Configurando as máquinas virtuais
 
 Após criar a rede NAT, selecione a máquina virtual `chef-server` na interface inicial do VirtualBox e clique em `Configurações`.
 
-![server settings](/images/server_settings.png)
+![server settings](/02-ConfiguracaoRedeVirtualBox/images/server_settings.png)
 
 Clique então em `Rede` e selecione a opção `Rede NAT`. Ao finalizar esta configuração, clique em OK:
 
-![select nat network](/images/select_nat_network.png)
+![select nat network](/02-ConfiguracaoRedeVirtualBox/images/select_nat_network.png)
 
 Repita o mesmo processo para a máquina virtual `chef-client`
 
@@ -59,11 +59,11 @@ Após obter os endereços IP atribuídos via DHCP a ambas as máquinas virtuais,
 
 Para isto, na console do VirtualBox clique em `Arquivo`, `Preferências` e selecione a opção `Rede` no menu lateral esquerdo. Nesta tela, a nossa rede NAT será exibida. Clique então no terceiro botão na lateral direita para editar as configurações:
 
-![nat configurations](/images/nat_configurations.png)
+![nat configurations](/02-ConfiguracaoRedeVirtualBox/images/nat_configurations.png)
 
 Em seguida, clique em `Encaminhamento de portas`:
 
-![port forwarding](/images/port_forwarding.png)
+![port forwarding](/02-ConfiguracaoRedeVirtualBox/images/port_forwarding.png)
 
 Vamos então clicar no sinal de `+` no lado direito da tela e adicionar os mapeamentos. Deveremos criar os seguintes mapeamentos de porta:
 
@@ -76,11 +76,11 @@ Vamos então clicar no sinal de `+` no lado direito da tela e adicionar os mapea
 
 Conforme a imagem abaixo:
 
-![port forwarding rules](/images/port_forwarding_rules.png)
+![port forwarding rules](/02-ConfiguracaoRedeVirtualBox/images/port_forwarding_rules.png)
 
 Feito isto, salve todas as configurações e utilize o putty para realizar acesso remoto, lembrando que para acesso ao `chef-server` vamos utilizar a porta `22` e para o `chef-client` vamos utilizar a porta `23`:
 
-![putty access](/images/putty_access.png)
+![putty access](/02-ConfiguracaoRedeVirtualBox/02-ConfiguracaoRedeVirtualBox/images/putty_access.png)
 
 ## 5. Reconfigurando o chef-server
 
@@ -106,4 +106,4 @@ Valide o funcionamento através do comando:
 
 Em nossa ultima aula, utilizamos o knife para realizar o bootstrap de um container, simulando o servidor `motd-server`. Como tratava-se de um container, o mesmo não existe mais quando reiniciamos o servidor, e o processo de bootstrap deverá ser realizado novamente. Neste caso, acesse a interface web do `chef-server` e remova o node criado anteriormente selecionando o mesmo e clicando em `Delete` no menu lateral esquerdo:
 
-![delete node](/images/delete_node.png)
+![delete node](/02-ConfiguracaoRedeVirtualBox/images/delete_node.png)
