@@ -2,59 +2,38 @@
 
 O Chef Client é um agente que deve ser executado localmente em todos os servidores de sua infra-estrutura que serão gerenciados pelo Chef. Quando o processo de `chef-client` é executado, a função principal do mesmo é se comunicar com o Chef Server afim de realizar o download e execução das receitas Chef.
 
-## 1. Obtendo o endereço IP do servidor
+## 1. Configurando o Port Forwarding
 
 Neste laboratório, vamos instalar o chef-client em uma máquina virtual e vamos utilizar o mesmo para executar algumas receitas que vão criar arquivos e instalar pacotes em nosso servidor.
 
-Para instalar o chef-client, inicie a máquina virtual com o nome `chef-client`. Ao acessar a máquina virtual, realize acesso à mesma utilizando as seguintes credenciais:
+Para instalar o chef-client, inicie a máquina virtual com o nome `chef-client`. 
 
-    Usuário: chef-admin
-    Senha: chefclient
+O próximo passo é realizar as configurções de `port forwarding` no VirtualBox para que possamoe realizar cesso remoto através do. `putty`. 
 
-O próximo passo é obter o endereço IP de nossa máquina virtual para que possamos realizar acesso remoto através do `putty`. Vamos utilizar o putty para facilitar a interação entre nossos computadores e as máquinas virtuais.
+> Você pode realizar acesso diretamente através da interface do VirtualBox, no entanto o uso do Putty é recomendado afim de facilitar o processo de execução dos comandos disponíveis neste tutorial.
 
-Ao acessar nossa máquina virtual, vamos executar o seguinte comando para obter o endereço IP da mesma:
+Na tela do Virtual Box, selecione a VM `chef-client` e em seguida clique em `Configurações`, na parte superior da tela:
 
-    $ ifconfig
+![vm configurations](/02-ChefClient/images/vm_configurations.png)
 
-A saída deste comando deverá ser semelhante a:
+Na próxima tela, clique em `Rede`e em seguida em `Redirecionamento de Portas`:
 
-    docker0   Link encap:Ethernet  HWaddr 02:42:6a:16:c6:38  
-              inet addr:172.17.0.1  Bcast:172.17.255.255  Mask:255.255.0.0
-              UP BROADCAST MULTICAST  MTU:1500  Metric:1
-              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:0
-              RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+![port redirect](/02-ChefClient/images/port_redirect.png)
 
-    enp0s3    Link encap:Ethernet  HWaddr 08:00:27:eb:75:ab  
-              inet addr:192.168.0.14  Bcast:192.168.0.255  Mask:255.255.255.0
-              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-              RX packets:1071 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:382 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000
-              RX bytes:349036 (349.0 KB)  TX bytes:42585 (42.5 KB)
+Agora, insira a porta 22 no campo `Porta do Hospedeiro` e também em `Porta do Convidado`. Clique em `OK` e em seguida em `OK` novamente:
 
-    lo        Link encap:Local Loopback  
-              inet addr:127.0.0.1  Mask:255.0.0.0
-              UP LOOPBACK RUNNING  MTU:65536  Metric:1
-              RX packets:160 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:160 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1
-              RX bytes:11840 (11.8 KB)  TX bytes:11840 (11.8 KB)
 
-Note que esta máquina virtual possui 3 interfaces de rede: uma dedicada ao Docker, que já está instalado, uma interface de loopback e uma interface denominada `enmp0s3`. Esta é a interface que iremos utilizar. Note que o endereço IP desta interface é apresentado na seção `inet addr`. No exemplo acima, o endereço a ser utilizado é `192.168.0.14`. Anote este endereço, pois precisaremos dele no próximo passo.
+![ports configuration](/02-ChefClient/images/ports_configuration.png)
+
 
 
 ## 2. Configurando o Putty
 
-Agora que já sabemos o endereço IP de nosso servidor, vamos configurar o Putty para realizar acesso remoto ao mesmo. Abra o Putty em seu computador e no campo `Host Name (or IP Address)` insira o endereço IP do servidor após `chef-admin@`. No campo `Saved Sessions` insira o nome `chef-client` e em seguida clique em `Save` no lado direito. Isto irá permitir um acesso mais facilitado ao servidor durante os próximos laboratórios:
+Agora que já sabemos o endereço IP de nosso servidor, vamos configurar o Putty para realizar acesso remoto ao mesmo. Abra o Putty em seu computador e no campo `Host Name (or IP Address)` insira `chef-admin@localhost`. No campo `Saved Sessions` insira o nome `chef-client` e em seguida clique em `Save` no lado direito. Isto irá permitir um acesso mais facilitado ao servidor durante os próximos laboratórios:
 
 ![putty screen](/02-ChefClient/images/putty_screen.png)
 
->Note que o endereço IP de seu servidor poderá ser alterado durante as aulas. Realize este processo todas as vezes que criar uma nova máquina virtual no seu ambiente.
-
-Feito isto, clique em `Open` na parte inferior da tela. O Putty irá então abrir uma nova conexão ao seu servidor chamado `chef-client` e irá solicitar uma senha. Insira a senha do usuário `chef-admin` e pressione enter. Você estará conectado ao seu servidor.
+Feito isto, clique em `Open` na parte inferior da tela. O Putty irá então abrir uma nova conexão ao seu servidor chamado `chef-client` e irá solicitar uma senha. Insira a senha `chefclient` e pressione enter. Você estará conectado ao seu servidor.
 
 A partir daqui, todos os comandos deverão ser executados diretamente na janela do Putty.
 
