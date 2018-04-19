@@ -20,8 +20,9 @@ Você deverá executar o laboratório na seguinte ordem:
 
 
 * [1. Criando uma Bakery Image ](/01-BakeryImage/)
-* [2. Instalação do Chef Client](/02-ChefClient/)
-* [3. Instalação do Chef Server](/03-InstalacaoChefServer/)
-* [4. Bootstrap de Nodes utilizando o Knife](/04-BootstrapUsandoKnife/)
-* [5. Criando Chef Cookbooks](/05-CriandoCookbooks/)
-* [6. Instalando o Apache através do Chef Server](/06-InstalandoApache/)
+* [2. Configuração da Rede das VMs](/02-ConfiguracaoRedeVirtualBox/)
+* [3. Instalação do Chef Client](/03-ChefClient/)
+* [4. Instalação do Chef Server](/04-InstalacaoChefServer/)
+* [5. Bootstrap de Nodes utilizando o Knife](/05-BootstrapUsandoKnife/)
+* [6. Criando Chef Cookbooks](/06-CriandoCookbooks/)
+* [7. Instalando o Apache através do Chef Server](/07-InstalandoApache/)
