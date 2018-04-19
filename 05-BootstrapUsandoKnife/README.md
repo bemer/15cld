@@ -97,6 +97,10 @@ Para isto, acesse o `Chef Server`, em seguida navegue até o diretório `chef-re
 
 >O endereço IP do servidor Chef Client é o endereço provido pelo DHCP do VirtualBox - mesmo que utilizamos para realizar as configurações de encaminhamento de porta - enquanto a porta utilizada pelo container é a mesma exposta no passo 2 deste tutorial. Lembre-se de remover os sinais `<>` do comando.
 
+Caso você precise obter o endereço IP do chef-client novamente, utilize o comando a seguir no `chef-client`:
+
+    $ ifconfig enp0s3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
+
 Ao executarmos este comando, o knife irá realizar uma conexão via ssh ao nosso container, instalar os pacotes necessários e configurar o mesmo para que ocorra a conexão com o Chef Server.
 
 Para validar o funcionamento do comando, acesse seu Chef Server através da interface web, navegue até `Nodes`, e você deverá ver seu container listado como um servidor chamado `motd-server`:
