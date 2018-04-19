@@ -67,7 +67,7 @@ Em seguida, clique em `Encaminhamento de portas`:
 
 Vamos então clicar no sinal de `+` no lado direito da tela e adicionar os mapeamentos. Deveremos criar os seguintes mapeamentos de porta:
 
-| Porta do Host | IP do Convidad    | Porta do Convidado |
+| Porta do Host | IP do Convidado   | Porta do Convidado |
 |---------------|-------------------|--------------------|
 | 22            | IP do chef-server | 22                 |
 | 80            | IP do chef-server | 80                 |
