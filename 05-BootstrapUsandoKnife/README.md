@@ -65,6 +65,10 @@ No output deste comando, você poderá visualizar as duas imagens disponíves: a
 Agora que já temos nossa imagem criada, podemos executar a mesma através do seguinte comando:
 
     $ sudo docker run -d -P --name motd-server ssh-server_image
+    
+Caso você receba uma mensagem de erro dizendo que já existe um container em execução com este nome, utilize o comando a seguir para remover o container anterior e poder utilizar o mesmo nome em sua execução:
+    
+    $ docker rm -f $(docker ps -a -q) 
 
 Note que estamos criando um container chamado `motd-server` a partir da imagem `ssh-server_image`. Adicionalmente estamos utilizando a opção `-d` para executar o container em `daemon mode`, ou seja, em background, e a opção `-P` para realizar o mapeamento de uma porta aleatória para acesso ao SSH.
 
