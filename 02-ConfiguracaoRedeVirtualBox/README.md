@@ -80,7 +80,7 @@ Conforme a imagem abaixo:
 
 Feito isto, salve todas as configurações e utilize o putty para realizar acesso remoto, lembrando que para acesso ao `chef-server` vamos utilizar a porta `22` e para o `chef-client` vamos utilizar a porta `23`:
 
-![putty access](/02-ConfiguracaoRedeVirtualBox/02-ConfiguracaoRedeVirtualBox/images/putty_access.png)
+![putty access](/02-ConfiguracaoRedeVirtualBox/images/putty_access.png)
 
 ## 5. Reconfigurando o chef-server
 
