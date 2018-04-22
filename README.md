@@ -26,3 +26,4 @@ Você deverá executar o laboratório na seguinte ordem:
 * [5. Bootstrap de Nodes utilizando o Knife](/05-BootstrapUsandoKnife/)
 * [6. Criando Chef Cookbooks](/06-CriandoCookbooks/)
 * [7. Instalando o Apache através do Chef Server](/07-InstalandoApache/)
+* [8. Começando com o Ansible](08-ComecandoComAnsible)
