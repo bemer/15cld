@@ -155,7 +155,7 @@ E verifique o conteúdo do arquivo motd:
 
     # cat motd
 
-## 5. Instalando o apache com o Ansible
+## 5. Instalando o apache através do Ansible
 
 Agora que já vimos como criar um novo arquivo utilizando um playbook do Ansible, vamos criar um novo playbook que irá instalar o Apache em nosso container.
 
